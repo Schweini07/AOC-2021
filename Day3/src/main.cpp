@@ -6,58 +6,42 @@
 #include <functional>
 
 std::vector<std::vector<int> > getInput();
+std::vector<int> getBinaryWithCriteria(std::vector<std::vector<int> > input, bool least_common);
 
 int main()
 {
-    std::string gamma, epsilon;
-    std::vector<std::vector<int> > o2 = getInput();
-    std::vector<std::vector<int> > co2 = o2;
+    std::vector<std::vector<int> > input = getInput();
+    std::vector<int> o2 = getBinaryWithCriteria(input, false);
 
-    for (int vecs = 0; vecs < 2; vecs++)
-    {
-        std::vector<std::vector<int> > &vec = vecs == 0 ? o2 : co2;
-        int j = 0;
-        for (int bit = 0; bit < 12; bit++)
-        {
-            int one_count = 0;
-            int zero_count = 0;
-
-            for (int i = 0; i < vec.size(); i++)
-            {
-                for (; j < vec[i].size();)
-                {
-                    if (bit > 0)
-                    {
-                        if (vec.size() == 1) break;
-                        if ((gamma == "1" && vecs == 0) || (gamma == "0" && vecs == 0))
-                            vec.erase(std::remove(vec.begin(), vec.end(), vec[i]), vec.end());
-                    }
-                    vec[i][j] == 0 ? zero_count++ : one_count++;
-                    break;
-                }
-            }
-            j++;
-
-            int count_difference = one_count - zero_count;
-            gamma += count_difference >= 0 ? "1" : "0";
-            epsilon += gamma == "0" ? "1" : "0";
-            std::cout << gamma << " | " << epsilon << std::endl;
-        }
-    }
-
-    std::cout << "O2: ";
-    for (auto b : o2[0])
-    {
-        std::cout << b;
-    }
-    std::cout << "\nCO2: ";
-    for (auto b : co2[0])
-    {
-        std::cout << b;
-    }
-    std::cout << std::endl;
 
     return 0;
+}
+
+std::vector<int> getBinaryWithCriteria(std::vector<std::vector<int> > input, bool least_common)
+{
+    std::vector<int> output;
+
+    for (int bit = 0; bit < 12; bit++)
+    {
+        int bit_count = 0;
+        bool most_common;
+        for (int i = 0; i < input.size(); i++)
+        {
+            if (bit > 0)
+            {
+                if (least_common && most_common == 0) break;
+                else if (!least_common && most_common == 1) break;
+                input.erase(std::remove(input.begin(), input.end(), input[i]), input.end());
+            }
+
+            bit_count += input[i][bit] == 0 ? -1 : 1;
+        }
+        bit_count >= 0 ? most_common = 1 : most_common = 0;
+        
+        std::cout << most_common << std::endl;
+    }
+
+    return output;
 }
 
 std::vector<std::vector<int> > getInput()
