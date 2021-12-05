@@ -25,48 +25,43 @@ std::vector<int> getBinaryWithCriteria(std::vector<std::vector<int> > input, boo
 
     std::cout << std::endl;
 
-    for (int bit = 0; bit < 12; bit++)
+    for (int bit = 0; bit < 16; bit++)
     {
-        //std::cout << "Bit: " << bit << std::endl;
         int bit_count = 0;
         int most_common;
         std::cout << std::endl;
-        for (int i = 0; i < input.size(); )
+        for (int i = 0; i < input.size(); i++)
         {
             input[i][bit] == 0 ? bit_count -= 1 : bit_count += 1;
+        }
 
+        if (bit_count == 0)
+            most_common == 1;
+        else
+            bit_count > 0 ? most_common = 1 : most_common = 0;
+
+        for (int i = 0; i < input.size();)
+        {
+            bool s = input[i][bit] == most_common;
             bool erased = false;
-            if (bit > 0)
+            if ((input[i][bit] != most_common && !least_common) || (input[i][bit] == most_common && least_common))
             {
-                std::cout << coutBinary(input[i]) << " " << input[i][bit-1] << " " << most_common << " " << i << ", ";
-                if ((input[i][bit-1] != most_common && !least_common) || (input[i][bit-1] == most_common && least_common))
-                {
-                    erased = true;
-                    input.erase(std::remove(input.begin(), input.end(), input[i]), input.end());
-                }
-                if (input.size() == 1)
-                {
-                    std::cout << " HIHIHFDISH" << std::endl;
-                    for (auto b : input[0])
-                    {
-                        output.push_back(b);
-                    }
-                    return output;
-                }
+                erased = true;
+                input.erase(input.begin()+i);
             }
-
-            //std::cout << coutBinary(input[i]) << " " << input[i][bit-1] << ", ";
+            if (input.size() == 1)
+            {
+                for (auto b : input[0])
+                {
+                    output.push_back(b);
+                }
+                return output;
+            }
 
             if (!erased) i++;
         }
-        //std::cout << "\nBit count: " << bit_count << std::endl;
-        if (bit_count == 0)
-            least_common ? most_common == 0 : most_common == 1;
-        else
-            bit_count > 0 ? most_common = 1 : most_common = 0;
     }
 
-    std::cout << "\nInput Size: " << input.size() << std::endl;
     for (auto b : input[1])
     {
         output.push_back(b);
