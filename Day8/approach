@@ -1,0 +1,119 @@
+1 (ab) (2 Loops)
+
+ ---
+-	a
+-	a
+-   a
+ ---
+-	b
+-	b
+-	b
+ ---
+ 
+7 (dab)
+
+ ddd
+-	a
+-	a
+-   a
+ ---
+-	b
+-	b
+-	b
+ ---
+
+3 - beinhaltet a,b,d -> 3 (fbcad) (2 Loops)
+
+ ddd
+-	a
+-	a
+-   a
+ fff
+-	b
+-	b
+-	b
+ ccc
+
+5 (cdfeb)
+
+ ddd
+e	a
+e	a
+e   a
+ fff
+-	b
+-	b
+-	b
+ ccc
+
+2 (gcdfa)
+
+ ddd
+e	a
+e	a
+e   a
+ fff
+g	b
+g	b
+g	b
+ ccc
+ 
+ 1 (ab) (2 Loops)
+
+ ---
+-	a
+-	a
+-   a
+ ---
+-	b
+-	b
+-	b
+ ---
+ 
+7 (dab)
+
+ ddd
+-	a
+-	a
+-   a
+ ---
+-	b
+-	b
+-	b
+ ---
+
+3 - beinhaltet a,b,d -> 3 (fbcad) (2 Loops)
+
+ ddd
+-	a
+-	a
+-   a
+ ccc
+-	b
+-	b
+-	b
+ fff
+
+5 (cdfeb)
+
+ ddd
+e	a
+e	a
+e   a
+ ccc
+-	b
+-	b
+-	b
+ fff
+
+2 (gcdfa)
+
+ ddd
+e	b
+e	b
+e   b
+ fff
+g	a
+g	a
+g	a
+ ccc
