@@ -9,9 +9,9 @@
 typedef std::vector<std::string> string_vector;
 
 std::vector<std::pair<string_vector, string_vector> > getPuzzleInput();
-bool hasChars(std::string sequence, std::vector<char> digit, int count = 3);
+bool hasChars(std::string sequence, std::string digit, int count = 3);
 std::string getMissingChars(std::string sequence, std::string chars);
-void printDigit(std::vector<char> digit);
+void printDigit(std::string digit);
 
 int main()
 {
@@ -66,7 +66,7 @@ int main()
             4:       -    -     :5
             6:        ----
             */
-            std::vector<char> digit {0, 0, 0, 0, 0, 0, 0, 0, 0};
+            std::string digit = "000000000";
 
             digit[2] = j == 0 ? unique_sequences[1][0] : unique_sequences[1][1];
             digit[5] = j == 0 ? unique_sequences[1][1] : unique_sequences[1][0];
@@ -75,8 +75,7 @@ int main()
 
             for (int k = 0; k < 2; k++)
             {
-                std::vector<char> digit_cpy = digit;
-                std::string str_digit (digit_cpy.begin(), digit_cpy.end());
+                std::string digit_cpy = digit;
 
                 std::string three;
                 for (auto s : five_sequences)
@@ -84,8 +83,8 @@ int main()
                     if (hasChars(s, digit_cpy))
                     {
                         three = s;
-                        digit_cpy[3] = k == 0 ? getMissingChars(s, str_digit)[0] : getMissingChars(s, str_digit)[1];
-                        digit_cpy[6] = k == 0 ? getMissingChars(s, str_digit)[1] : getMissingChars(s, str_digit)[0];
+                        digit_cpy[3] = k == 0 ? getMissingChars(s, digit_cpy)[0] : getMissingChars(s, digit_cpy)[1];
+                        digit_cpy[6] = k == 0 ? getMissingChars(s, digit_cpy)[1] : getMissingChars(s, digit_cpy)[0];
                     }
                 }
 
@@ -119,7 +118,7 @@ int main()
     return 0;
 }
 
-bool hasChars(std::string sequence, std::vector<char> digit, int count)
+bool hasChars(std::string sequence, std::string digit, int count)
 {
     for (auto d : digit)
     {
@@ -141,7 +140,7 @@ std::string getMissingChars(std::string sequence, std::string chars)
     return missing_chars;
 }
 
-void printDigit(std::vector<char> digit)
+void printDigit(std::string digit)
 {
     for (int i = 0; i < digit.size(); i++)
     {
