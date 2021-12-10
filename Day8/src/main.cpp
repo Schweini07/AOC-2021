@@ -88,24 +88,22 @@ int main()
                     }
                 }
 
-                std::string new_str_digit (digit_cpy.begin(), digit_cpy.end());
                 std::string five;
                 for (auto s : five_sequences)
                 {
                     if (hasChars(s, digit_cpy, 4) && s != three)
                     {
                         five = s;
-                        digit_cpy[1] = getMissingChars(s, new_str_digit)[0];
+                        digit_cpy[1] = getMissingChars(s, digit_cpy)[0];
                     }
                 }
 
-                std::string new_new_str_digit (digit_cpy.begin(), digit_cpy.end());
                 for (auto s : five_sequences)
                 {
                     if (s != three && s != five)
                     {
-                        std::cout << new_new_str_digit << std::endl;
-                        digit_cpy[4] = getMissingChars(s, new_new_str_digit)[0];
+                        digit_cpy[4] = getMissingChars(s, digit_cpy)[0];
+                        std::cout << digit_cpy << std::endl;
                     }
                 }
 
